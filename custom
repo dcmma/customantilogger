@@ -61,7 +61,7 @@ local function loadHWIDExceptions()
         writefile(path, "-- Put trusted script names here.\n-- Example: script1.lua\n")
     end
 
-    print(string.format("✅ [Condom Anti-Discord & HWID Protection loaded with %d exception%s]",
+    print(string.format("✅ [Custom-Condom Anti-Discord & HWID Protection loaded with %d exception%s]",
         #hwidExceptions,
         #hwidExceptions == 1 and "" or "s"))
 end
