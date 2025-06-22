@@ -147,7 +147,7 @@ local function protectHWID()
             if protectionsPaused or isTrustedScript() then
                 return originalGetClientId(...)
             else
-                notify("[Condom]", "Blocked access to GetClientId() (HWID Protection)")
+                notify("[Custom-Condom]", "Blocked access to GetClientId() (HWID Protection)")
                 error("[HWID Protection] Access to GetClientId() is blocked.", 2)
             end
         end)
@@ -210,7 +210,7 @@ end
 local function toggleProtections()
     protectionsPaused = not protectionsPaused
     local status = protectionsPaused and "PAUSED" or "RESUMED"
-    notify("[Condom]", "HWID + IP Protections " .. status)
+    notify("[Custom-Condom]", "HWID + IP Protections " .. status)
 
     -- Auto resume protections after 75 seconds if paused
     if protectionsPaused then
@@ -219,7 +219,7 @@ local function toggleProtections()
         end
         pauseTimer = task.delay(75, function()
             protectionsPaused = false
-            notify("[Condom]", "HWID + IP Protections AUTO-RESUMED after timeout")
+            notify("[Custom-Condom]", "HWID + IP Protections AUTO-RESUMED after timeout")
         end)
     else
         if pauseTimer then
@@ -239,7 +239,7 @@ local function activateProtections()
     detect_and_hook_http()
     protectHWID()
 
-    notify("[Condom]", "Protections activated. Double tap Scroll Lock to pause HWID + IP protection.")
+    notify("[Custom-Condom]", "Protections activated. Double tap Scroll Lock to pause HWID + IP protection.")
 end
 
 --== Scroll Lock Listener ==--
@@ -287,7 +287,7 @@ end
 
 --== Initial Notifications ==--
 local player = Players.LocalPlayer
-notify("[Condom]", "Press Scroll Lock to activate. (Auto-Activates after 75 seconds)")
+notify("[Custom-Condom]", "Press Scroll Lock to activate. (Auto-Activates after 75 seconds)")
 
 -- Still wait in the background to make sure protections activate if player isn’t fully loaded
 task.spawn(function()
